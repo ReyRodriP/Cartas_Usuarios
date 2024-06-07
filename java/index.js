@@ -45,9 +45,22 @@ function createUsuario(users) {
     card.appendChild(phone);
     card.appendChild(website);
 
-    
-
     usuarioContainer.appendChild(card);
+
+    const button1 = document.createElement('button');
+    button1.type = 'button';
+    button1.innerText= 'Ver albumes';
+    card.appendChild(button1);
+
+    const button2 = document.createElement('button');
+    button2.type = 'button';
+    button2.innerText= 'Ver post';
+    card.appendChild(button2);
+
+    const button3 = document.createElement('button');
+    button3.type = 'button';
+    button3.innerText= 'Ver quehacer';
+    card.appendChild(button3);
 }
 
 fetchUsuarios(10);
