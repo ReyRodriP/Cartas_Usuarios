@@ -29,7 +29,7 @@ function createUsuario(users) {
 
     const address = document.createElement("p");
     address.classList.add("address");
-    address.textContent = users.address;
+    address.textContent = `${users.address.street}, ${users.address.city}`;
 
     const phone = document.createElement("p");
     phone.classList.add("phone");
@@ -47,20 +47,41 @@ function createUsuario(users) {
 
     usuarioContainer.appendChild(card);
 
+    
     const button1 = document.createElement('button');
     button1.type = 'button';
     button1.innerText= 'Ver albumes';
-    card.appendChild(button1);
+    button1.addEventListener('click', () => {
+        //  window.location.href = `https://jsonplaceholder.typicode.com/users/${users.id}/albums`;
+        window.location.href = `../html/albumes.html?userId=${users.id}`;
+    });
+    
 
     const button2 = document.createElement('button');
     button2.type = 'button';
     button2.innerText= 'Ver post';
-    card.appendChild(button2);
+    button2.addEventListener('click', () => {
+        //  window.location.href = `https://jsonplaceholder.typicode.com/users/${users.id}/posts`;
+        window.location.href = (`../html/Posts.html?userId=${users.id}`);
+    });
+    
 
     const button3 = document.createElement('button');
     button3.type = 'button';
     button3.innerText= 'Ver quehacer';
+    button3.addEventListener('click', () => {
+        //  window.location.href = `https://jsonplaceholder.typicode.com/users/${users.id}/todos`;
+        window.location.href = (`../html/ToDos.html?userId=${users.id}`);
+    });
+    
+    
+
+    card.appendChild(button1);
+    card.appendChild(button2);
     card.appendChild(button3);
+    
 }
 
+
 fetchUsuarios(10);
+
