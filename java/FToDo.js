@@ -30,7 +30,13 @@ function createTareas(tareas) {
 
         const completed = document.createElement("p");
         completed.classList.add("completed");
-        completed.textContent = `Completado: ${tarea.completed ? 'Sí' : 'No'}`;
+        completed.textContent = tarea.completed ? 'Completado' : 'Sin Completar';
+
+        if (tarea.completed) {
+            completed.classList.add('completed-yes');
+        } else {
+            completed.classList.add('completed-no');
+        }
 
         tareaCard.appendChild(title);
         tareaCard.appendChild(completed);

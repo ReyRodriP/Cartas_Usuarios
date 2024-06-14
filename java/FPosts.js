@@ -1,42 +1,92 @@
 const usuarioContainer = document.querySelector(".Posts-Container");
+const modal_container = document.getElementById('modal_container');
+const closeButton = document.getElementById('close');
+const comentariosContainer = document.getElementById('comentarios-container');
 
-//Nota: Esto es un QueryString, investiga mas.
-    addEventListener('DOMContentLoaded', (event) => {
+// Nota: Esto es un QueryString, investiga más.
+addEventListener('DOMContentLoaded', (event) => {
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get('userId');
 
     if (userId) {
-        fetchPost(userId);
+        fetchPosts(userId);
     } else {
-        alert('Dele para atras');
+        alert('Por favor, regrese y seleccione un usuario.');
     }
 });
 
-function fetchPost(userId) {
+function fetchPosts(userId) {
     fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
-
-    .then((res) => res.json())
-    .then((data) => {
-        createPost(data);
-    });
+        .then((res) => res.json())
+        .then((data) => {
+            createPosts(data);
+        });
 }
 
-function createPost(Posts) {
-    Posts.map(Posts => {
-        const PostsCard = document.createElement("div");
-        PostsCard.classList.add("Post-block");
+function createPosts(posts) {
+    posts.forEach(post => {
+        const postCard = document.createElement("div");
+        postCard.classList.add("Post-block");
 
         const title = document.createElement("p");
         title.classList.add("title");
-        title.textContent = Posts.title;
+        title.textContent = post.title;
 
         const body = document.createElement("p");
         body.classList.add("body");
-        body.textContent = Posts.body;
+        body.textContent = post.body;
 
-        PostsCard.appendChild(title);
-        PostsCard.appendChild(body);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.innerText = 'Comentarios';
+        button.addEventListener('click', () => {
+            fetchComments(post.id);
+            modal_container.classList.add('show');
+        });
 
-        usuarioContainer.appendChild(PostsCard);
+        closeButton.addEventListener('click', () => {
+            modal_container.classList.remove('show');
+        });
+
+        postCard.appendChild(title);
+        postCard.appendChild(body);
+        postCard.appendChild(button);
+        usuarioContainer.appendChild(postCard);
     });
 }
+
+function fetchComments(postId) {
+    fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
+        .then((res) => res.json())
+        .then((data) => {
+            displayComments(data);
+        });
+}
+
+function displayComments(comments) {
+    comentariosContainer.innerHTML = ''; // Limpiar comentarios previos
+    comments.forEach(comment => {
+        const commentCard = document.createElement("div");
+        commentCard.classList.add("comment-block");
+
+        const name = document.createElement("p");
+        name.classList.add("name");
+        name.textContent = `Nombre: ${comment.name}`;
+
+        const email = document.createElement("p");
+        email.classList.add("email");
+        email.textContent = `Email: ${comment.email}`;
+
+        const body = document.createElement("p");
+        body.classList.add("body");
+        body.textContent = comment.body;
+
+        commentCard.appendChild(name);
+        commentCard.appendChild(email);
+        commentCard.appendChild(body);
+
+        comentariosContainer.appendChild(commentCard);
+    });
+}
+
+

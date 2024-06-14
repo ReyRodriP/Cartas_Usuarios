@@ -86,6 +86,10 @@ body{
 
 .usuarios-container button{
     margin: 10px;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
 }
 
 .back{

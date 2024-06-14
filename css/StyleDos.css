@@ -1,7 +1,9 @@
 body{
     font-family: sans-serif;
     margin: 0;
+    
 }
+
 
 header{
     background-color: black;
@@ -71,5 +73,23 @@ nav, a:hover{
     padding: 0 1rem;
     font-size: 16px;
     font-weight: 300;
+}
+
+.completed-yes {
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+    background-color: rgb(133, 171, 75);
+    color: #fff;
+    width: 40%;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.completed-no {
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+    background-color: rgb(190, 59, 59);
+    color: #fff;
+    width: 40%;
+    margin: auto;
+    border-radius: 20px;
 }
 
