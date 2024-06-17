@@ -22,7 +22,7 @@ function fetchPosts(userId) {
 }
 
 function createPosts(posts) {
-    posts.forEach(post => {
+    posts.map(post => {
         const postCard = document.createElement("div");
         postCard.classList.add("Post-block");
 
@@ -61,7 +61,7 @@ function fetchComments(postId) {
 
 function displayComments(comments) {
     comentariosContainer.innerHTML = ''; // Limpiar comentarios previos
-    comments.forEach(comment => {
+    comments.map(comment => {
         const commentCard = document.createElement("div");
         commentCard.classList.add("comment-block");
 

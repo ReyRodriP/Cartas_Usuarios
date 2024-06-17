@@ -82,47 +82,6 @@ nav, a:hover{
     box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
 }
 
-.modal-container {
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.2);
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    opacity: 0;
-}
-
-.modal {
-    background-color: #ffffff;
-    width: 600px;
-    max-width: 100%;
-    padding: 30px 50px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-.modal button{
-    margin: 10px;
-    background-color: #000000;
-    color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
-    font-size: large;
-}
-.modal h2{
-    margin: 0;
-}
-
-.modal p{
-    opacity: 0.7;
-    font-size: 14px;
-    font-weight: 700;
-}
 
 .show {
     pointer-events: auto;

@@ -20,7 +20,7 @@ function fetchToDos(userId) {
 }
 
 function createTareas(tareas) {
-    tareas.forEach(tarea => {
+    tareas.filter(tarea => {
         const tareaCard = document.createElement("div");
         tareaCard.classList.add("tarea-block");
 
