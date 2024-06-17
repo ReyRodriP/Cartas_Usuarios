@@ -1,6 +1,4 @@
 const usuarioContainer = document.querySelector(".Posts-Container");
-const modal_container = document.getElementById('modal_container');
-const closeButton = document.getElementById('close');
 const comentariosContainer = document.getElementById('comentarios-container');
 
 // Nota: Esto es un QueryString, investiga más.
@@ -38,14 +36,12 @@ function createPosts(posts) {
 
         const button = document.createElement('button');
         button.type = 'button';
+        button.classList.add('btn', 'btn-primary');
         button.innerText = 'Comentarios';
+        button.setAttribute('data-bs-toggle', 'modal');
+        button.setAttribute('data-bs-target', '#commentsModal');
         button.addEventListener('click', () => {
             fetchComments(post.id);
-            modal_container.classList.add('show');
-        });
-
-        closeButton.addEventListener('click', () => {
-            modal_container.classList.remove('show');
         });
 
         postCard.appendChild(title);
@@ -88,5 +84,4 @@ function displayComments(comments) {
         comentariosContainer.appendChild(commentCard);
     });
 }
-
 

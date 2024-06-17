@@ -1,7 +1,5 @@
 const usuarioContainer = document.querySelector(".Album-Container");
-const modal_container = document.getElementById('modal_container');
-const closeButton = document.getElementById('close');
-const FotosContainer = document.getElementById('fotos-container');
+const fotosContainer = document.getElementById('fotos-container');
 
 // Nota: Esto es un QueryString, investiga más.
 addEventListener('DOMContentLoaded', (event) => {
@@ -34,14 +32,12 @@ function createAlbum(albumes) {
 
         const button = document.createElement('button');
         button.type = 'button';
-        button.innerText= 'Ver fotos';
+        button.classList.add('btn', 'btn-primary');
+        button.innerText = 'Ver fotos';
+        button.setAttribute('data-bs-toggle', 'modal');
+        button.setAttribute('data-bs-target', '#photosModal');
         button.addEventListener('click', () => {
             fetchPhotos(album.id);
-            modal_container.classList.add('show');
-        });
-
-        closeButton.addEventListener('click', () => {
-            modal_container.classList.remove('show');
         });
 
         albumCard.appendChild(title);
@@ -59,7 +55,7 @@ function fetchPhotos(albumId) {
 }
 
 function displayPhotos(photos) {
-    FotosContainer.innerHTML = ''; 
+    fotosContainer.innerHTML = ''; // Limpiar fotos previas
     photos.forEach(photo => {
         const photoCard = document.createElement("div");
         photoCard.classList.add("photo-block");
@@ -76,6 +72,6 @@ function displayPhotos(photos) {
         photoCard.appendChild(title);
         photoCard.appendChild(picture);
 
-        FotosContainer.appendChild(photoCard);
+        fotosContainer.appendChild(photoCard);
     });
 }

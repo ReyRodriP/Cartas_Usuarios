@@ -132,13 +132,6 @@ nav, a:hover{
 .fotos-container{
     grid-template-columns: 1fr 1fr 1fr;
 }    
-.fotos-container, .photo-block{
-    border-radius: 70px;
-    padding-top: 50px;
-    padding-bottom: 70px;
-    background-color: rgb(226, 220, 220);
-    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
-}
 
 .fotos-container, .photo-block, .picture{
     width: 200px;
@@ -146,7 +139,6 @@ nav, a:hover{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40px;
-    margin-top: 20px;
 }
 .show {
     pointer-events: auto;
